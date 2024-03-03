@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="using:LoadingIndicators.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="300"
+             x:Class="LoadingIndicators.Avalonia.Demo.Views.MainView">
+
+    <UserControl.Styles>
+        <Style Selector="c|LoadingIndicator">
+            <Setter Property="Foreground" Value="#CC119EDA" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*" Background="#222222">
+        <c:LoadingIndicator Grid.Row="0" Grid.Column="0" Mode="Arc" />
+        <c:LoadingIndicator Grid.Row="0" Grid.Column="1" Mode="Arcs" />
+        <c:LoadingIndicator Grid.Row="0" Grid.Column="2" Mode="ArcsRing" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="0" Mode="DoubleBounce" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="1" Mode="FlipPlane" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="2" Mode="Pulse" />
+        <c:LoadingIndicator Grid.Row="2" Grid.Column="0" Mode="Ring" />
+        <c:LoadingIndicator Grid.Row="2" Grid.Column="1" Mode="ThreeDots" />
+        <c:LoadingIndicator Grid.Row="2" Grid.Column="2" Mode="Wave" />
+    </Grid>
+</UserControl>

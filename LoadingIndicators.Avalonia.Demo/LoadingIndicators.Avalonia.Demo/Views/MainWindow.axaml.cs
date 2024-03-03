@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace LoadingIndicators.Avalonia.Demo;
+namespace LoadingIndicators.Avalonia.Demo.Views;
 
 public partial class MainWindow : Window
 {
