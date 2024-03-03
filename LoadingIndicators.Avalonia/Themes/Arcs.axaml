@@ -4,7 +4,7 @@
 
     <Design.PreviewWith>
         <Border Width="128" Height="128" Background="#333333">
-            <c:LoadingIndicator Foreground="#CC119EDA"
+            <c:LoadingIndicator Foreground="Chartreuse"
                                 Mode="Arcs"
                                 Theme="{DynamicResource Arcs}"
                                 BorderBrush="DarkRed"
@@ -16,7 +16,7 @@
 
     <ControlTheme x:Key="Arcs" TargetType="c:LoadingIndicator">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+        <Setter Property="Foreground" Value="#CC119EDA" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="MinWidth" Value="64" />
