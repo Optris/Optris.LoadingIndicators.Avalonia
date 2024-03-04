@@ -67,15 +67,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -102,15 +102,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -137,15 +137,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -172,15 +172,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -207,15 +207,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -242,15 +242,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -277,15 +277,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>
@@ -312,15 +312,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="Opacity" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="Opacity" Value="0.3" />
                                             </KeyFrame>
                                         </Animation>

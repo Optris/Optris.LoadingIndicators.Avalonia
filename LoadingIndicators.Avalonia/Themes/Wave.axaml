@@ -61,15 +61,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.216">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.432">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
                                         </Animation>
@@ -92,15 +92,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.216">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.432">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
                                         </Animation>
@@ -123,15 +123,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.216">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.432">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
                                         </Animation>
@@ -154,15 +154,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.216">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.432">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
                                         </Animation>
@@ -185,15 +185,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.100">
+                                            <KeyFrame Cue="10%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.216">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1.6" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.432">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
                                         </Animation>

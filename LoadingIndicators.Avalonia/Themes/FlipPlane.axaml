@@ -49,15 +49,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.400">
+                                            <KeyFrame Cue="25%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="0" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                             </KeyFrame>
                                         </Animation>
@@ -67,15 +67,15 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="ScaleTransform.ScaleX" Value="1" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.400">
+                                            <KeyFrame Cue="25%">
                                                 <Setter Property="ScaleTransform.ScaleX" Value="0" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:0.800">
+                                            <KeyFrame Cue="50%">
                                                 <Setter Property="ScaleTransform.ScaleX" Value="1" />
                                             </KeyFrame>
                                         </Animation>

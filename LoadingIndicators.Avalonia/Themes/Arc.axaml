@@ -49,11 +49,11 @@
                                                    IterationCount="Infinite"
                                                    SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame KeyTime="0:0:0.000">
+                                            <KeyFrame Cue="0%">
                                                 <Setter Property="RotateTransform.Angle" Value="0" />
                                             </KeyFrame>
 
-                                            <KeyFrame KeyTime="0:0:3.000">
+                                            <KeyFrame Cue="100%">
                                                 <Setter Property="RotateTransform.Angle" Value="360" />
                                             </KeyFrame>
                                         </Animation>
