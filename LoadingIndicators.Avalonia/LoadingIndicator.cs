@@ -1,59 +1,48 @@
 ﻿using Avalonia;
-using Avalonia.Collections;
-using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
-using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
 namespace LoadingIndicators.Avalonia;
 
+[PseudoClasses(INACTIVE_STATE, ACTIVE_STATE)]
 public class LoadingIndicator : TemplatedControl
 {
     private const string INACTIVE_STATE = ":inactive";
     private const string ACTIVE_STATE = ":active";
 
-    private static readonly StyledProperty<LoadingIndicatorMode> modeProperty =
-        AvaloniaProperty.Register<LoadingIndicator, LoadingIndicatorMode>(nameof(Mode));
-    private static readonly StyledProperty<bool> isActiveProperty =
+    // ReSharper disable InconsistentNaming
+    public static readonly StyledProperty<bool> IsActiveProperty =
         AvaloniaProperty.Register<LoadingIndicator, bool>(nameof(IsActive), true);
-    private static readonly StyledProperty<double> speedRatioProperty =
+    public static readonly StyledProperty<LoadingIndicatorMode> ModeProperty =
+        AvaloniaProperty.Register<LoadingIndicator, LoadingIndicatorMode>(nameof(Mode));
+    public static readonly StyledProperty<double> SpeedRatioProperty =
         AvaloniaProperty.Register<LoadingIndicator, double>(nameof(SpeedRatio), 1d);
+    // ReSharper restore InconsistentNaming
 
-    private static readonly string[] modeNames;
-    private static readonly IDictionary<string, ControlTheme> controlThemes;
+    private static readonly Dictionary<LoadingIndicatorMode, ControlTheme> themes;
 
     protected override Type StyleKeyOverride => typeof(LoadingIndicator);
 
-    public LoadingIndicatorMode Mode
-    {
-        get => GetValue(modeProperty);
-        set => SetValue(modeProperty, value);
-    }
     public bool IsActive
     {
-        get => GetValue(isActiveProperty);
-        set => SetValue(isActiveProperty, value);
+        get => GetValue(IsActiveProperty);
+        set => SetValue(IsActiveProperty, value);
+    }
+    public LoadingIndicatorMode Mode
+    {
+        get => GetValue(ModeProperty);
+        set => SetValue(ModeProperty, value);
     }
     public double SpeedRatio
     {
-        get => GetValue(speedRatioProperty);
-        set => SetValue(speedRatioProperty, value);
+        get => GetValue(SpeedRatioProperty);
+        set => SetValue(SpeedRatioProperty, value);
     }
 
     static LoadingIndicator()
     {
-        var resourcesUri = new Uri("avares://LoadingIndicators.Avalonia/LoadingIndicators.axaml");
-        if (AvaloniaXamlLoader.Load(resourcesUri) is not ResourceDictionary resourceDictionary) throw new NullReferenceException();
-        modeNames = Enum.GetNames(typeof(LoadingIndicatorMode));
-        controlThemes = new AvaloniaDictionary<string, ControlTheme>(resourceDictionary.MergedDictionaries.Count);
-        foreach (var resourceProvider in resourceDictionary.MergedDictionaries)
-        {
-            var dictionary = (ResourceDictionary)resourceProvider;
-            var key = (string)dictionary.Keys.First();
-            if (!dictionary.TryGetValue(key, out var value)) throw new ArgumentNullException(nameof(value));
-            if (value is not ControlTheme theme) throw new ArgumentNullException(nameof(theme));
-            controlThemes.Add(key, theme);
-        }
+        if (!TryGetThemes(out themes)) throw new NullReferenceException("Failed to get control themes");
     }
 
     public LoadingIndicator() => UpdateTheme();
@@ -62,14 +51,31 @@ public class LoadingIndicator : TemplatedControl
     {
         base.OnApplyTemplate(e);
         UpdateVisualStates();
-        UpdateTheme();
     }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
-        if (change.Property == isActiveProperty) UpdateVisualStates();
-        if (change.Property == modeProperty) UpdateTheme();
+        if (change.Property == IsActiveProperty) UpdateVisualStates();
+        else if (change.Property == ModeProperty) UpdateTheme();
+    }
+
+    private static bool TryGetThemes(out Dictionary<LoadingIndicatorMode, ControlTheme> controlThemes)
+    {
+        controlThemes = new Dictionary<LoadingIndicatorMode, ControlTheme>();
+        if (Application.Current == null) return false;
+        foreach (var mode in Enum.GetValues<LoadingIndicatorMode>())
+        {
+            if (!Application.Current.TryGetResource(Enum.GetName(mode)!, null, out var resource)) continue;
+            if (resource is not ControlTheme theme) continue;
+            controlThemes.Add(mode, theme);
+        }
+        return controlThemes.Count > 0;
+    }
+
+    private void UpdateTheme()
+    {
+        if (themes.TryGetValue(Mode, out var theme)) Theme = theme;
     }
 
     private void UpdateVisualStates()
@@ -78,6 +84,4 @@ public class LoadingIndicator : TemplatedControl
         PseudoClasses.Remove(INACTIVE_STATE);
         PseudoClasses.Add(IsActive ? ACTIVE_STATE : INACTIVE_STATE);
     }
-
-    private void UpdateTheme() => Theme = controlThemes[modeNames[(int)Mode]];
 }

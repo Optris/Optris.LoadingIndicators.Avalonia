@@ -10,5 +10,5 @@ public enum LoadingIndicatorMode
     Pulse,
     Ring,
     ThreeDots,
-    Wave,
+    Wave
 }

@@ -5,11 +5,11 @@
     <Design.PreviewWith>
         <Border Width="128" Height="128" Background="#333333">
             <c:LoadingIndicator Foreground="Chartreuse"
-                                Mode="Arc"
-                                Theme="{DynamicResource Arc}"
                                 BorderBrush="DarkRed"
                                 BorderThickness="1"
+                                Theme="{DynamicResource Arc}"
                                 IsActive="True"
+                                Mode="Arc"
                                 SpeedRatio="1" />
         </Border>
     </Design.PreviewWith>
@@ -32,7 +32,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        IsVisible="{Binding $parent[c:LoadingIndicator].IsActive}">
+                        IsVisible="{TemplateBinding IsActive}">
 
                     <Grid Background="Transparent">
                         <Grid.RenderTransform>

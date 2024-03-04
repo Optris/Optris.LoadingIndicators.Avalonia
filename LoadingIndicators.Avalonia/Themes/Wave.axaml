@@ -7,11 +7,11 @@
             <c:LoadingIndicator Width="100"
                                 Height="100"
                                 Foreground="Chartreuse"
-                                Mode="Wave"
-                                Theme="{DynamicResource Wave}"
                                 BorderBrush="DarkRed"
                                 BorderThickness="1"
+                                Theme="{DynamicResource Wave}"
                                 IsActive="True"
+                                Mode="Wave"
                                 SpeedRatio="1" />
         </Border>
     </Design.PreviewWith>
@@ -32,7 +32,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        IsVisible="{Binding $parent[c:LoadingIndicator].IsActive}">
+                        IsVisible="{TemplateBinding IsActive}">
 
                     <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*"
                           Background="Transparent">
