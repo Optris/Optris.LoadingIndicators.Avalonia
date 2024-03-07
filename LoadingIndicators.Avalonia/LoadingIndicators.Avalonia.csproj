@@ -7,10 +7,10 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>LoadingIndicators.Avalonia</Title>
-        <Version>11.0.5.1</Version>
+        <Version>11.0.10</Version>
         <Authors>moviegear</Authors>
         <Description>LoadingIndicators.Avalonia is an adaptation for Avalonia of the LoadingIndicators.WPF collection of 9 animated loading indicators.</Description>
-        <Copyright>2023 moviegear</Copyright>
+        <Copyright>moviegear © $([System.DateTime]::Now.Year)</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/moviegear/LoadingIndicators.Avalonia/</PackageProjectUrl>
@@ -28,7 +28,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.5" />
+        <PackageReference Include="Avalonia" Version="11.0.*" />
     </ItemGroup>
 
     <ItemGroup>
