@@ -3,7 +3,10 @@
 
 ![Demo](https://raw.githubusercontent.com/moviegear/LoadingIndicators.Avalonia/master/.github/demo.gif)
 
+[Online demo](https://moviegear.github.io/LoadingIndicators.Avalonia)
+
 LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicators.WPF](https://github.com/zeluisping/LoadingIndicators.WPF) collection of 9 animated loading indicators.
+
 
 ## Themes
 - Arc
