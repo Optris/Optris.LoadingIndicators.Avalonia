@@ -5,7 +5,7 @@
 
 LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicators.WPF](https://github.com/zeluisping/LoadingIndicators.WPF) collection of 9 animated loading indicators.
 
-## Styles
+## Themes
 - Arc
 - Arcs
 - Arcs Ring
@@ -17,17 +17,27 @@ LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicato
 - Wave
 
 ## Features
-- Adjustable animation speed
 - Easy activation/deactivation
-- Easy change of theme
+- Easy theme change
+- Adjustable animation speed
 
 ## Usage
-- Include Namespace
+1. Add resources in App.axaml
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceInclude Source="avares://LoadingIndicators.Avalonia/LoadingIndicators.axaml" />
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
+2. Include namespace
 ```xml
 <Window ...
         xmlns:li="using:LoadingIndicators.Avalonia">
 ```
-- Add Loading indicator and select mode
+3. Add indicator and select mode
 ```xml
-<li:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" IsActive="{Binding IsArcsActive}" Mode="Arcs" />
+<li:LoadingIndicator IsActive="{Binding IsBusy}" Mode="Arcs" SpeedRatio="1.2" />
 ```
