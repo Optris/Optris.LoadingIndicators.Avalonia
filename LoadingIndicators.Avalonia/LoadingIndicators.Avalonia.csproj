@@ -7,7 +7,7 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>LoadingIndicators.Avalonia</Title>
-        <Version>11.0.10</Version>
+        <Version>11.0.11</Version>
         <Authors>moviegear</Authors>
         <Description>LoadingIndicators.Avalonia is an adaptation for Avalonia of the LoadingIndicators.WPF collection of 9 animated loading indicators.</Description>
         <Copyright>moviegear © $([System.DateTime]::Now.Year)</Copyright>
