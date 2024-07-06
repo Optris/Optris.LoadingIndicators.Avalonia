@@ -3,7 +3,9 @@
                     xmlns:c="using:LoadingIndicators.Avalonia">
 
     <Design.PreviewWith>
-        <Border Width="128" Height="128" Background="#333333">
+        <Border Width="256" Height="256"
+                Background="#333333">
+
             <c:LoadingIndicator Foreground="Chartreuse"
                                 BorderBrush="DarkRed"
                                 BorderThickness="1"
@@ -19,10 +21,10 @@
         <Setter Property="Foreground" Value="#CC119EDA" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
+        <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
         <Setter Property="MinWidth" Value="64" />
         <Setter Property="MinHeight" Value="64" />
-        <Setter Property="MaxWidth" Value="64" />
-        <Setter Property="MaxHeight" Value="64" />
         <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="Template">
@@ -32,109 +34,90 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        IsVisible="{TemplateBinding IsActive}">
+                        IsVisible="{TemplateBinding IsActive}"
+                        IsHitTestVisible="{TemplateBinding IsHitTestVisible}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}">
 
-                    <Grid Background="Transparent">
-                        <Grid.RenderTransform>
-                            <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
-                        </Grid.RenderTransform>
+                    <Border.Styles>
+                        <Style Selector="Viewbox">
+                            <Setter Property="Width" Value="{TemplateBinding Width}" />
+                            <Setter Property="Height" Value="{TemplateBinding Height}" />
+                            <Setter Property="StretchDirection" Value="Both" />
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
 
-                        <Canvas x:Name="Canvas0" Opacity="1">
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas0" />
+                        <Style Selector="Arc">
+                            <Setter Property="Margin" Value="5" />
+                            <Setter Property="MinWidth" Value="{TemplateBinding MinWidth}" />
+                            <Setter Property="MinHeight" Value="{TemplateBinding MinHeight}" />
+                            <Setter Property="StrokeThickness" Value="5" />
+                            <Setter Property="StrokeLineCap" Value="Round" />
+                            <Setter Property="SweepAngle" Value="-250" />
+                        </Style>
+                    </Border.Styles>
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas0">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:2.000"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                    <Viewbox>
+                        <Viewbox.Styles>
+                            <Style Selector="c|LoadingIndicator:inactive /template/ Arc" />
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="RotateTransform.Angle" Value="0" />
-                                            </KeyFrame>
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#OuterArc">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:2.000"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="RotateTransform.Angle" Value="360" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="RotateTransform.Angle" Value="0" />
+                                        </KeyFrame>
 
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  StrokeThickness="10">
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="RotateTransform.Angle" Value="360" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
 
-                                <Path.Data>
-                                    <PathGeometry>
-                                        <PathGeometry.Transform>
-                                            <TranslateTransform X="31" Y="-9" />
-                                        </PathGeometry.Transform>
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#InnerArc">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:1.000"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                        <PathGeometry.Figures>
-                                            <PathFigure StartPoint="0,0"
-                                                        IsClosed="False">
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="RotateTransform.Angle" Value="0" />
+                                        </KeyFrame>
 
-                                                <PathFigure.Segments>
-                                                    <ArcSegment Size="40,40"
-                                                                IsLargeArc="True"
-                                                                SweepDirection="CounterClockwise"
-                                                                Point="40,40" />
-                                                </PathFigure.Segments>
-                                            </PathFigure>
-                                        </PathGeometry.Figures>
-                                    </PathGeometry>
-                                </Path.Data>
-                            </Path>
-                        </Canvas>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="RotateTransform.Angle" Value="-360" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
+                        </Viewbox.Styles>
 
-                        <Canvas x:Name="Canvas1" Opacity="0.3">
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas1" />
+                        <Grid>
+                            <Arc x:Name="OuterArc"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="-90" />
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas1">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:1.000"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                            <Arc x:Name="InnerArc"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="90"
+                                 Opacity="0.3">
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="RotateTransform.Angle" Value="0" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="RotateTransform.Angle" Value="-360" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
-
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  StrokeThickness="10">
-
-                                <Path.Data>
-                                    <PathGeometry>
-                                        <PathGeometry.Transform>
-                                            <TranslateTransform X="4" Y="18" />
-                                        </PathGeometry.Transform>
-
-                                        <PathGeometry.Figures>
-                                            <PathFigure StartPoint="0,0"
-                                                        IsClosed="False">
-
-                                                <PathFigure.Segments>
-                                                    <ArcSegment Size="30,30"
-                                                                IsLargeArc="True"
-                                                                SweepDirection="Clockwise"
-                                                                Point="40,40" />
-                                                </PathFigure.Segments>
-                                            </PathFigure>
-                                        </PathGeometry.Figures>
-                                    </PathGeometry>
-                                </Path.Data>
-                            </Path>
-                        </Canvas>
-                    </Grid>
+                                <Arc.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.85" ScaleY="0.85" />
+                                        <RotateTransform />
+                                    </TransformGroup>
+                                </Arc.RenderTransform>
+                            </Arc>
+                        </Grid>
+                    </Viewbox>
                 </Border>
             </ControlTemplate>
         </Setter>
