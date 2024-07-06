@@ -3,10 +3,10 @@
                     xmlns:c="using:LoadingIndicators.Avalonia">
 
     <Design.PreviewWith>
-        <Border Width="128" Height="128" Background="#333333">
-            <c:LoadingIndicator Width="100"
-                                Height="100"
-                                Foreground="Chartreuse"
+        <Border Width="256" Height="256"
+                Background="#333333">
+
+            <c:LoadingIndicator Foreground="Chartreuse"
                                 BorderBrush="DarkRed"
                                 BorderThickness="1"
                                 Theme="{DynamicResource ArcsRing}"
@@ -21,6 +21,8 @@
         <Setter Property="Foreground" Value="#CC119EDA" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
+        <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
         <Setter Property="MinWidth" Value="64" />
         <Setter Property="MinHeight" Value="64" />
         <Setter Property="IsHitTestVisible" Value="False" />
@@ -32,306 +34,247 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        IsVisible="{TemplateBinding IsActive}">
+                        IsVisible="{TemplateBinding IsActive}"
+                        IsHitTestVisible="{TemplateBinding IsHitTestVisible}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}">
 
-                    <Grid Background="Transparent"
-                          Width="64"
-                          Height="64">
+                    <Border.Styles>
+                        <Style Selector="Viewbox">
+                            <Setter Property="Width" Value="{TemplateBinding Width}" />
+                            <Setter Property="Height" Value="{TemplateBinding Height}" />
+                            <Setter Property="StretchDirection" Value="Both" />
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
 
-                        <Grid.RenderTransform>
-                            <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
-                        </Grid.RenderTransform>
+                        <Style Selector="Arc">
+                            <Setter Property="Opacity" Value="0.3" />
+                            <Setter Property="Margin" Value="5" />
+                            <Setter Property="MinWidth" Value="{TemplateBinding MinWidth}" />
+                            <Setter Property="MinHeight" Value="{TemplateBinding MinHeight}" />
+                            <Setter Property="StrokeThickness" Value="7" />
+                            <Setter Property="StrokeLineCap" Value="Square" />
+                            <Setter Property="SweepAngle" Value="20" />
+                        </Style>
+                    </Border.Styles>
 
-                        <Grid.Styles>
-                            <Style Selector="Canvas">
-                                <Setter Property="Opacity" Value="0.3" />
+                    <Viewbox>
+                        <Viewbox.Styles>
+                            <Style Selector="c|LoadingIndicator:inactive /template/ Arc" />
+
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc1">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
                             </Style>
 
-                            <Style Selector="Path">
-                                <Setter Property="StrokeThickness" Value="10" />
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc2">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.100"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
                             </Style>
-                        </Grid.Styles>
 
-                        <!-- 2.800 -->
-                        <Canvas x:Name="Canvas0">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="12" Y="0" />
-                            </Canvas.RenderTransform>
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc3">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.200"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas0" />
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas0">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
 
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc4">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.300"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
 
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 10,0 A 40,40 0 0 1 30,0" />
-                        </Canvas>
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
 
-                        <Canvas x:Name="Canvas1">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="24" Y="2" />
-                            </Canvas.RenderTransform>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
 
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas1" />
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc5">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.400"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas1">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.100"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
 
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
 
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc6">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.500"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 40,14 A 40,40 0 0 0 24,0" />
-                        </Canvas>
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
 
-                        <Canvas x:Name="Canvas2">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="26" Y="12" />
-                            </Canvas.RenderTransform>
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
 
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas2" />
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas2">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.200"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc7">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.600"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
 
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
 
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
 
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 40,10 A 40,40 0 0 1 40,30" />
-                        </Canvas>
+                            <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc8">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:0.800"
+                                               Delay="0:0:0.700"
+                                               IterationCount="Infinite"
+                                               SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                        <Canvas x:Name="Canvas3">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="24" Y="24" />
-                            </Canvas.RenderTransform>
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
 
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas3" />
+                                        <KeyFrame Cue="10%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas3">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.300"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="Opacity" Value="0.3" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
+                        </Viewbox.Styles>
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
+                        <Grid>
+                            <Arc x:Name="Arc1"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="-100" />
 
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
+                            <Arc x:Name="Arc2"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="-55" />
 
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
+                            <Arc x:Name="Arc3"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="-10" />
 
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 40,24 A 40,40 0 0 1 24,40" />
-                        </Canvas>
+                            <Arc x:Name="Arc4"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="35" />
 
-                        <Canvas x:Name="Canvas4">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="12" Y="27" />
-                            </Canvas.RenderTransform>
+                            <Arc x:Name="Arc5"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="80" />
 
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas4" />
+                            <Arc x:Name="Arc6"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="125" />
 
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas4">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.400"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
+                            <Arc x:Name="Arc7"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="170" />
 
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
-
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 10,40 A 40,40 0 0 0 30,40" />
-                        </Canvas>
-
-                        <Canvas x:Name="Canvas5">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="0" Y="24" />
-                            </Canvas.RenderTransform>
-
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas5" />
-
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas5">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.500"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
-
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
-
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 0,24 A 40,40 0 0 0 14,40" />
-                        </Canvas>
-
-                        <Canvas x:Name="Canvas6">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="-2" Y="12" />
-                            </Canvas.RenderTransform>
-
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas6" />
-
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas6">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.600"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
-
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
-
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 0,10 A 40,40 0 0 0 0,30" />
-                        </Canvas>
-
-                        <Canvas x:Name="Canvas7">
-                            <Canvas.RenderTransform>
-                                <TranslateTransform X="0" Y="2" />
-                            </Canvas.RenderTransform>
-
-                            <Canvas.Styles>
-                                <Style Selector="c|LoadingIndicator:inactive /template/ Canvas#Canvas7" />
-
-                                <Style Selector="c|LoadingIndicator:active /template/ Canvas#Canvas7">
-                                    <Style.Animations>
-                                        <Animation Duration="0:0:0.800"
-                                                   Delay="0:0:0.700"
-                                                   IterationCount="Infinite"
-                                                   SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
-
-                                            <KeyFrame Cue="0%">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="10%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-
-                                            <KeyFrame Cue="100%">
-                                                <Setter Property="Opacity" Value="0.3" />
-                                            </KeyFrame>
-                                        </Animation>
-                                    </Style.Animations>
-                                </Style>
-                            </Canvas.Styles>
-
-                            <Path Stroke="{TemplateBinding Foreground}"
-                                  Data="M 0,14 A 40,40 0 0 1 14,0" />
-                        </Canvas>
-                    </Grid>
+                            <Arc x:Name="Arc8"
+                                 Stroke="{TemplateBinding Foreground}"
+                                 StartAngle="215" />
+                        </Grid>
+                    </Viewbox>
                 </Border>
             </ControlTemplate>
         </Setter>
