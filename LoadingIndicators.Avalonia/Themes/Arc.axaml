@@ -53,7 +53,7 @@
                             <Setter Property="Margin" Value="5" />
                             <Setter Property="MinWidth" Value="{TemplateBinding MinWidth}" />
                             <Setter Property="MinHeight" Value="{TemplateBinding MinHeight}" />
-                            <Setter Property="StrokeThickness" Value="1" />
+                            <Setter Property="StrokeThickness" Value="2" />
                             <Setter Property="StrokeLineCap" Value="Round" />
                         </Style>
                     </Border.Styles>

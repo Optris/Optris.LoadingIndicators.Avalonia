@@ -52,7 +52,6 @@
                             <Setter Property="Margin" Value="5" />
                             <Setter Property="MinWidth" Value="{TemplateBinding MinWidth}" />
                             <Setter Property="MinHeight" Value="{TemplateBinding MinHeight}" />
-                            <Setter Property="StrokeThickness" Value="5" />
                             <Setter Property="StrokeLineCap" Value="Round" />
                             <Setter Property="SweepAngle" Value="-250" />
                         </Style>
@@ -100,16 +99,18 @@
                         <Grid>
                             <Arc x:Name="OuterArc"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="7.5"
                                  StartAngle="-90" />
 
                             <Arc x:Name="InnerArc"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="10"
                                  StartAngle="90"
                                  Opacity="0.3">
 
                                 <Arc.RenderTransform>
                                     <TransformGroup>
-                                        <ScaleTransform ScaleX="0.85" ScaleY="0.85" />
+                                        <ScaleTransform ScaleX="0.77" ScaleY="0.77" />
                                         <RotateTransform />
                                     </TransformGroup>
                                 </Arc.RenderTransform>

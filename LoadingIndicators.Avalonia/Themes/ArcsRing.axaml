@@ -65,7 +65,7 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc1">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
+                                    <Animation Duration="0:0:1.000"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -86,8 +86,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc2">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.100"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.125"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -108,8 +108,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc3">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.200"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.250"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -130,8 +130,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc4">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.300"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.375"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -152,8 +152,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc5">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.400"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.500"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -174,8 +174,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc6">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.500"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.625"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -196,8 +196,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc7">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.600"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.750"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -218,8 +218,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Arc#Arc8">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:0.800"
-                                               Delay="0:0:0.700"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.875"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 

@@ -61,7 +61,7 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Rectangle">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.600"
+                                    <Animation Duration="0:0:2.000"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -78,8 +78,8 @@
                                         </KeyFrame>
                                     </Animation>
 
-                                    <Animation Duration="0:0:1.600"
-                                               Delay="0:0:0.800"
+                                    <Animation Duration="0:0:2.000"
+                                               Delay="0:0:1.000"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 

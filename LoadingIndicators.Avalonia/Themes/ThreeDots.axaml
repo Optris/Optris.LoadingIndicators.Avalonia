@@ -65,7 +65,7 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse1">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.500"
+                                    <Animation Duration="0:0:1.000"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -99,8 +99,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse2">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.500"
-                                               Delay="0:0:0.250"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.333"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -129,8 +129,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse3">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.500"
-                                               Delay="0:0:0.500"
+                                    <Animation Duration="0:0:1.000"
+                                               Delay="0:0:0.666"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
