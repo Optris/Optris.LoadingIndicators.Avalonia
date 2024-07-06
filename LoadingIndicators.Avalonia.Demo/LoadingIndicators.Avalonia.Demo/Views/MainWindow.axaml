@@ -10,8 +10,10 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="LoadingIndicators Demo"
         Width="300" Height="300"
-        CanResize="False"
+        MinWidth="300" MinHeight="300"
+        CanResize="True"
         WindowStartupLocation="CenterScreen">
 
-    <v:MainView />
+    <v:MainView Width="{Binding $parent[Window].Bounds.Width}"
+                Height="{Binding $parent[Window].Bounds.Height}"/>
 </Window>

@@ -19,8 +19,6 @@
     <ControlTheme x:Key="DoubleBounce" TargetType="c:LoadingIndicator">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="#CC119EDA" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
         <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
         <Setter Property="MinWidth" Value="64" />
@@ -62,7 +60,7 @@
                         <Viewbox.Styles>
                             <Style Selector="c|LoadingIndicator:inactive /template/ Ellipse" />
 
-                            <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse0">
+                            <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse1">
                                 <Style.Animations>
                                     <Animation Duration="0:0:1.000"
                                                IterationCount="Infinite"
@@ -81,7 +79,7 @@
                                 </Style.Animations>
                             </Style>
 
-                            <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse1">
+                            <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse2">
                                 <Style.Animations>
                                     <Animation Duration="0:0:1.000"
                                                IterationCount="Infinite"
@@ -102,10 +100,10 @@
                         </Viewbox.Styles>
 
                         <Grid>
-                            <Ellipse x:Name="Ellipse0"
+                            <Ellipse x:Name="Ellipse1"
                                      Fill="{TemplateBinding Foreground}" />
 
-                            <Ellipse x:Name="Ellipse1"
+                            <Ellipse x:Name="Ellipse2"
                                      Fill="{TemplateBinding Foreground}" />
                         </Grid>
                     </Viewbox>

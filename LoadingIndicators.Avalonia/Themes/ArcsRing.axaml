@@ -19,8 +19,6 @@
     <ControlTheme x:Key="ArcsRing" TargetType="c:LoadingIndicator">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="#CC119EDA" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
         <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
         <Setter Property="MinWidth" Value="64" />
