@@ -2,16 +2,21 @@ name: Deploy to GitHub Pages
 
 env:
   PROJECT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj
-  OUTPUT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/bin/Release/net8.0/browser-wasm/AppBundle
+  OUTPUT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/bin/Release/net8.0-browser/wwwroot
 on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: write
+
 jobs:
   deploy-to-github-pages:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
@@ -19,23 +24,36 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools wasm-experimental
+        run: dotnet workload install wasm-tools-net8
 
       - name: Publish .NET Project
         run: dotnet publish $PROJECT_PATH -c Release --output release --nologo
 
-      - name: Change base-tag in index.html
-        run: sed -i 's/<base href="\/" \/>/<base href="\/LoadingIndicators.Avalonia\/" \/>/g' $OUTPUT_PATH/index.html
+      - name: Locate publish output
+        id: out
+        shell: bash
+        run: echo "dir=$OUTPUT_PATH" >> "$GITHUB_OUTPUT"
 
-      - name: copy index.html to 404.html
-        run: cp $OUTPUT_PATH/index.html $OUTPUT_PATH/404.html
+      - name: Prepare Pages artifacts
+        run: |
+          mkdir -p site
+          cp -r "${{ steps.out.outputs.dir }}/." site/
 
-      - name: Add .nojekyll file
-        run: touch $OUTPUT_PATH/.nojekyll
+          # Ensure GitHub Pages serves _framework and friends
+          touch site/.nojekyll
 
-      - name: Uploading files to gh-pages branch
+          # make <base href> point at /<repo>/
+          REPO="${GITHUB_REPOSITORY#*/}"
+          if grep -q '<base href="/"' site/index.html; then
+            sed -i "s#<base href=\"/\"#<base href=\"/${REPO}/\"#g" site/index.html
+          fi
+
+          # SPA-style fallback
+          cp site/index.html site/404.html || true
+
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.TOKEN }}
           branch: gh-pages
-          folder: ${{ env.OUTPUT_PATH }}
+          folder: site
+          clean: true
