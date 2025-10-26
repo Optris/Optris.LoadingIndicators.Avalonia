@@ -21,6 +21,7 @@
         <Setter Property="Foreground" Value="#CC119EDA" />
         <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
         <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
+        <Setter Property="Thickness" Value="6"/>
         <Setter Property="MinWidth" Value="64" />
         <Setter Property="MinHeight" Value="64" />
         <Setter Property="IsHitTestVisible" Value="False" />
@@ -65,7 +66,7 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse1">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.000"
+                                    <Animation Duration="0:0:1.800"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -74,19 +75,19 @@
                                             <Setter Property="ScaleTransform.ScaleY" Value="0" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                                            <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="30%">
+                                            <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                                            <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="48%">
                                             <Setter Property="ScaleTransform.ScaleX" Value="0" />
                                             <Setter Property="ScaleTransform.ScaleY" Value="0" />
-                                        </KeyFrame>
-
-                                        <KeyFrame Cue="45%">
-                                            <Setter Property="ScaleTransform.ScaleX" Value="1" />
-                                            <Setter Property="ScaleTransform.ScaleY" Value="1" />
-                                        </KeyFrame>
-
-                                        <KeyFrame Cue="55%">
-                                            <Setter Property="ScaleTransform.ScaleX" Value="1" />
-                                            <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
                                         <KeyFrame Cue="100%">
@@ -99,8 +100,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse2">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.000"
-                                               Delay="0:0:0.333"
+                                    <Animation Duration="0:0:1.800"
+                                               Delay="0:0:0.250"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -109,14 +110,19 @@
                                             <Setter Property="ScaleTransform.ScaleY" Value="0" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="45%">
+                                        <KeyFrame Cue="20%">
                                             <Setter Property="ScaleTransform.ScaleX" Value="1" />
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="55%">
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="ScaleTransform.ScaleX" Value="1" />
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="48%">
+                                            <Setter Property="ScaleTransform.ScaleX" Value="0" />
+                                            <Setter Property="ScaleTransform.ScaleY" Value="0" />
                                         </KeyFrame>
 
                                         <KeyFrame Cue="100%">
@@ -129,8 +135,8 @@
 
                             <Style Selector="c|LoadingIndicator:active /template/ Ellipse#Ellipse3">
                                 <Style.Animations>
-                                    <Animation Duration="0:0:1.000"
-                                               Delay="0:0:0.666"
+                                    <Animation Duration="0:0:1.800"
+                                               Delay="0:0:0.500"
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
@@ -139,14 +145,19 @@
                                             <Setter Property="ScaleTransform.ScaleY" Value="0" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="45%">
+                                        <KeyFrame Cue="20%">
                                             <Setter Property="ScaleTransform.ScaleX" Value="1" />
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="55%">
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="ScaleTransform.ScaleX" Value="1" />
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                                        </KeyFrame>
+
+                                        <KeyFrame Cue="48%">
+                                            <Setter Property="ScaleTransform.ScaleX" Value="0" />
+                                            <Setter Property="ScaleTransform.ScaleY" Value="0" />
                                         </KeyFrame>
 
                                         <KeyFrame Cue="100%">
@@ -161,15 +172,18 @@
                         <Grid ColumnDefinitions="10,Auto,10,Auto,10">
                             <Ellipse x:Name="Ellipse1"
                                      Grid.Column="0"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}" 
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse2"
                                      Grid.Column="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}" 
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse3"
                                      Grid.Column="4"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}" 
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
                         </Grid>
                     </Viewbox>
                 </Border>

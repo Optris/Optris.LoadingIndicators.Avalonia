@@ -2,7 +2,10 @@ using Avalonia.Controls;
 
 namespace LoadingIndicators.Avalonia.Demo.Views;
 
-public partial class MainView : UserControl
+public sealed partial class MainView : UserControl
 {
-    public MainView() => InitializeComponent();
+    public MainView()
+    {
+        InitializeComponent();
+    }
 }

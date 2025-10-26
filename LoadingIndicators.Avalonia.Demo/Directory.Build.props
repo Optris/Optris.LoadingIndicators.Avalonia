@@ -1,12 +1,5 @@
 <Project>
   <PropertyGroup>
-    <Nullable>enable</Nullable>
-    <AvaloniaVersion>11.0.*</AvaloniaVersion>
-    <IsAotCompatible>true</IsAotCompatible>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <DebugType>none</DebugType>
-    <StripSymbols>true</StripSymbols>
+    <AvaloniaVersion>11.3.8</AvaloniaVersion>
   </PropertyGroup>
 </Project>

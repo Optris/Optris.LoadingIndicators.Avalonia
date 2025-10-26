@@ -17,7 +17,9 @@ public class LoadingIndicator : TemplatedControl
     public static readonly StyledProperty<LoadingIndicatorMode> ModeProperty =
         AvaloniaProperty.Register<LoadingIndicator, LoadingIndicatorMode>(nameof(Mode));
     public static readonly StyledProperty<double> SpeedRatioProperty =
-        AvaloniaProperty.Register<LoadingIndicator, double>(nameof(SpeedRatio), 1d);
+        AvaloniaProperty.Register<LoadingIndicator, double>(nameof(SpeedRatio), 1.5);
+    public static readonly StyledProperty<double> ThicknessProperty =
+        AvaloniaProperty.Register<LoadingIndicator, double>(nameof(Thickness), 4);
     // ReSharper restore InconsistentNaming
 
     private static readonly Dictionary<LoadingIndicatorMode, ControlTheme> themes;
@@ -39,13 +41,22 @@ public class LoadingIndicator : TemplatedControl
         get => GetValue(SpeedRatioProperty);
         set => SetValue(SpeedRatioProperty, value);
     }
+    public double Thickness
+    {
+        get => GetValue(ThicknessProperty);
+        set => SetValue(ThicknessProperty, value);
+    }
 
     static LoadingIndicator()
     {
-        if (!TryGetThemes(out themes)) throw new NullReferenceException("Failed to get control themes");
+        if (!TryGetThemes(out themes))
+            throw new NullReferenceException("Failed to get control themes");
     }
 
-    public LoadingIndicator() => UpdateTheme();
+    public LoadingIndicator()
+    {
+        UpdateTheme();
+    }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
@@ -56,18 +67,23 @@ public class LoadingIndicator : TemplatedControl
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
-        if (change.Property == IsActiveProperty) UpdateVisualStates();
-        else if (change.Property == ModeProperty) UpdateTheme();
+        if (change.Property == IsActiveProperty)
+            UpdateVisualStates();
+        else if (change.Property == ModeProperty)
+            UpdateTheme();
     }
 
     private static bool TryGetThemes(out Dictionary<LoadingIndicatorMode, ControlTheme> controlThemes)
     {
-        controlThemes = new Dictionary<LoadingIndicatorMode, ControlTheme>();
-        if (Application.Current == null) return false;
-        foreach (var mode in Enum.GetValues<LoadingIndicatorMode>())
+        controlThemes = [];
+        if (Application.Current == null)
+            return false;
+        foreach (LoadingIndicatorMode mode in Enum.GetValues(typeof(LoadingIndicatorMode)))
         {
-            if (!Application.Current.TryGetResource(Enum.GetName(mode)!, null, out var resource)) continue;
-            if (resource is not ControlTheme theme) continue;
+            if (!Application.Current.TryGetResource(Enum.GetName(typeof(LoadingIndicatorMode), mode)!, null, out var resource))
+                continue;
+            if (resource is not ControlTheme theme)
+                continue;
             controlThemes.Add(mode, theme);
         }
         return controlThemes.Count > 0;
@@ -75,7 +91,8 @@ public class LoadingIndicator : TemplatedControl
 
     private void UpdateTheme()
     {
-        if (themes.TryGetValue(Mode, out var theme)) Theme = theme;
+        if (themes.TryGetValue(Mode, out var theme))
+            Theme = theme;
     }
 
     private void UpdateVisualStates()
