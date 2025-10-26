@@ -1,14 +1,16 @@
 name: Deploy to GitHub Pages
 
-env:
-  PROJECT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj
-  OUTPUT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/bin/Release/net8.0-browser/wwwroot
 on:
   push:
     branches: [ master ]
+  workflow_dispatch: {}
 
 permissions:
   contents: write
+
+env:
+  PROJECT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj
+  TFM: net8.0-browser
 
 jobs:
   deploy-to-github-pages:
@@ -27,12 +29,20 @@ jobs:
         run: dotnet workload install wasm-tools-net8
 
       - name: Publish .NET Project
-        run: dotnet publish $PROJECT_PATH -c Release --output release --nologo
+        run: dotnet publish "$PROJECT_PATH" -c Release --nologo
 
       - name: Locate publish output
         id: out
         shell: bash
-        run: echo "dir=$OUTPUT_PATH" >> "$GITHUB_OUTPUT"
+        run: |
+          ROOT="$(dirname "$PROJECT_PATH")"
+          OUT="$ROOT/bin/Release/${TFM}/publish/wwwroot"
+          # Fallback for older layouts
+          if [ ! -d "$OUT" ]; then
+            OUT="$ROOT/bin/Release/${TFM}/browser-wasm/AppBundle"
+          fi
+          echo "dir=$OUT" >> "$GITHUB_OUTPUT"
+          echo "Using publish dir: $OUT"
 
       - name: Prepare Pages artifacts
         run: |
@@ -42,7 +52,7 @@ jobs:
           # Ensure GitHub Pages serves _framework and friends
           touch site/.nojekyll
 
-          # make <base href> point at /<repo>/
+          # Adjust <base href> for /<repo>/ hosting
           REPO="${GITHUB_REPOSITORY#*/}"
           if grep -q '<base href="/"' site/index.html; then
             sed -i "s#<base href=\"/\"#<base href=\"/${REPO}/\"#g" site/index.html
