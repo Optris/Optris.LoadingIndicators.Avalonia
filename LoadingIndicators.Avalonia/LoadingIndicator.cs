@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
+using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 
 namespace LoadingIndicators.Avalonia;
@@ -47,8 +48,13 @@ public class LoadingIndicator : TemplatedControl
         set => SetValue(ThicknessProperty, value);
     }
 
+    private static readonly Lazy<bool> s_resourcesLoaded = new(EnsureResourcesLoaded);
+
     static LoadingIndicator()
     {
+        if (!s_resourcesLoaded.Value)
+            throw new NullReferenceException("Failed to load control resources");
+
         if (!TryGetThemes(out themes))
             throw new NullReferenceException("Failed to get control themes");
     }
@@ -56,6 +62,20 @@ public class LoadingIndicator : TemplatedControl
     public LoadingIndicator()
     {
         UpdateTheme();
+    }
+
+    private static bool EnsureResourcesLoaded()
+    {
+        if (Application.Current == null)
+            return false;
+
+        var asm = typeof(LoadingIndicator).Assembly.GetName().Name!;
+        var res = new ResourceInclude(new Uri($"avares://{asm}/"))
+        {
+            Source = new Uri($"avares://{asm}/LoadingIndicators.axaml"),
+        };
+        Application.Current.Resources.MergedDictionaries.Add(res);
+        return true;
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
