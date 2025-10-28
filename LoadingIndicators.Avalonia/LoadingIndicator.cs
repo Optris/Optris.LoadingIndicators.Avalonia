@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
-using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 
 namespace LoadingIndicators.Avalonia;
@@ -44,7 +43,7 @@ public class LoadingIndicator : TemplatedControl
         set => SetValue(ThicknessProperty, value);
     }
 
-    private static Dictionary<LoadingIndicatorMode, ControlTheme> _themes = [];
+    private static readonly Dictionary<LoadingIndicatorMode, ControlTheme> _themes;
 
     static LoadingIndicator()
     {
@@ -54,7 +53,6 @@ public class LoadingIndicator : TemplatedControl
 
     public LoadingIndicator()
     {
-
         UpdateTheme();
     }
 
