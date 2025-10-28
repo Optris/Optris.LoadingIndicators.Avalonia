@@ -42,8 +42,8 @@ jobs:
           set -euo pipefail
           ROOT="$(dirname "$PROJECT_PATH")"
 
-          CANDIDATE1="$ROOT/bin/Release/${TFM}/release/wwwroot"
-          CANDIDATE2="$ROOT/bin/Release/${TFM}/publish/wwwroot"
+          CANDIDATE1="$ROOT/bin/Release/${TFM}/publish/wwwroot"
+          CANDIDATE2="$ROOT/bin/Release/${TFM}/release/wwwroot"
           CANDIDATE3="$ROOT/bin/Release/${TFM}/browser-wasm/AppBundle"
 
           if [ -d "$CANDIDATE1" ]; then OUT="$CANDIDATE1"

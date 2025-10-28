@@ -27,8 +27,15 @@ LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicato
 - Adjustable animation speed
 
 ## Usage
-Add indicator and select mode
+1. Add Styles in `App.axaml`
+```xml
+<Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://LoadingIndicators.Avalonia/LoadingIndicators.axaml" />
+</Application.Styles>
+```
 
+2. Add indicator and select mode
 ```xml
 <LoadingIndicator IsActive="{Binding IsBusy}" Mode="Arcs" SpeedRatio="1.5" Thickness="4" />
 ```

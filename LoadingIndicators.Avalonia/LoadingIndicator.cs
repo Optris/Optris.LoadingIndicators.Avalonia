@@ -23,10 +23,6 @@ public class LoadingIndicator : TemplatedControl
         AvaloniaProperty.Register<LoadingIndicator, double>(nameof(Thickness), 4);
     // ReSharper restore InconsistentNaming
 
-    private static readonly Dictionary<LoadingIndicatorMode, ControlTheme> themes;
-
-    protected override Type StyleKeyOverride => typeof(LoadingIndicator);
-
     public bool IsActive
     {
         get => GetValue(IsActiveProperty);
@@ -48,34 +44,18 @@ public class LoadingIndicator : TemplatedControl
         set => SetValue(ThicknessProperty, value);
     }
 
-    private static readonly Lazy<bool> s_resourcesLoaded = new(EnsureResourcesLoaded);
+    private static Dictionary<LoadingIndicatorMode, ControlTheme> _themes = [];
 
     static LoadingIndicator()
     {
-        if (!s_resourcesLoaded.Value)
-            throw new NullReferenceException("Failed to load control resources");
-
-        if (!TryGetThemes(out themes))
+        if (!TryGetThemes(out _themes))
             throw new NullReferenceException("Failed to get control themes");
     }
 
     public LoadingIndicator()
     {
+
         UpdateTheme();
-    }
-
-    private static bool EnsureResourcesLoaded()
-    {
-        if (Application.Current == null)
-            return false;
-
-        var asm = typeof(LoadingIndicator).Assembly.GetName().Name!;
-        var res = new ResourceInclude(new Uri($"avares://{asm}/"))
-        {
-            Source = new Uri($"avares://{asm}/LoadingIndicators.axaml"),
-        };
-        Application.Current.Resources.MergedDictionaries.Add(res);
-        return true;
     }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
@@ -96,7 +76,7 @@ public class LoadingIndicator : TemplatedControl
     private static bool TryGetThemes(out Dictionary<LoadingIndicatorMode, ControlTheme> controlThemes)
     {
         controlThemes = [];
-        if (Application.Current == null)
+        if (Application.Current is null)
             return false;
         foreach (LoadingIndicatorMode mode in Enum.GetValues(typeof(LoadingIndicatorMode)))
         {
@@ -111,7 +91,7 @@ public class LoadingIndicator : TemplatedControl
 
     private void UpdateTheme()
     {
-        if (themes.TryGetValue(Mode, out var theme))
+        if (_themes.TryGetValue(Mode, out var theme))
             Theme = theme;
     }
 
