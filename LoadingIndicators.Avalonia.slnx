@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj" Id="cd9f7838-c4e6-4bc4-8c0f-55840a0d2d5f" />
-  <Project Path="LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Desktop/LoadingIndicators.Avalonia.Demo.Desktop.csproj" Id="59b64b07-b1f4-4762-bb6e-fd7ed665c4a0" />
-  <Project Path="LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.csproj" Id="2e3e6fb6-5e5c-4dea-90c9-980c262a7116" />
-  <Project Path="LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj" Id="d1e5a175-b483-4002-832f-ff8ed2359352" />
+  <Project Path="LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj" />
+  <Project Path="LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Desktop/LoadingIndicators.Avalonia.Demo.Desktop.csproj" />
+  <Project Path="LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.csproj" />
+  <Project Path="LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj" />
 </Solution>
