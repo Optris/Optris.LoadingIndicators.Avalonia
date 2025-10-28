@@ -2,23 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:c="using:LoadingIndicators.Avalonia"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
              x:Class="LoadingIndicators.Avalonia.Demo.Views.MainView"
              Background="#222222">
 
     <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*,*">
-        <c:LoadingIndicator Grid.Row="0" Grid.Column="0" Mode="Arc" />
-        <c:LoadingIndicator Grid.Row="0" Grid.Column="1" Mode="ArcEase" />
-        <c:LoadingIndicator Grid.Row="0" Grid.Column="2" Mode="ArcGrow" />
-        <c:LoadingIndicator Grid.Row="0" Grid.Column="3" Mode="Arcs" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="0" Mode="ArcsRing" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="1" Mode="DoubleBounce" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="2" Mode="FlipPlane" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="3" Mode="Pulse" />
-        <c:LoadingIndicator Grid.Row="2" Grid.Column="0" Mode="Ring" />
-        <c:LoadingIndicator Grid.Row="2" Grid.Column="1" Mode="ThreeDots" />
-        <c:LoadingIndicator Grid.Row="2" Grid.Column="2" Mode="Wave" />
+        <LoadingIndicator Grid.Row="0" Grid.Column="0" Mode="Arc" />
+        <LoadingIndicator Grid.Row="0" Grid.Column="1" Mode="ArcEase" />
+        <LoadingIndicator Grid.Row="0" Grid.Column="2" Mode="ArcGrow" />
+        <LoadingIndicator Grid.Row="0" Grid.Column="3" Mode="Arcs" />
+        <LoadingIndicator Grid.Row="1" Grid.Column="0" Mode="ArcsRing" />
+        <LoadingIndicator Grid.Row="1" Grid.Column="1" Mode="DoubleBounce" />
+        <LoadingIndicator Grid.Row="1" Grid.Column="2" Mode="FlipPlane" />
+        <LoadingIndicator Grid.Row="1" Grid.Column="3" Mode="Pulse" />
+        <LoadingIndicator Grid.Row="2" Grid.Column="0" Mode="Ring" />
+        <LoadingIndicator Grid.Row="2" Grid.Column="1" Mode="ThreeDots" />
+        <LoadingIndicator Grid.Row="2" Grid.Column="2" Mode="Wave" />
     </Grid>
 
 </UserControl>
