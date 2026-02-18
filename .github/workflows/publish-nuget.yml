@@ -30,16 +30,11 @@ jobs:
       - name: Pack
         run: dotnet pack LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj -c Release --no-build -o ./artifacts
 
-      - name: Get NuGet API key via OIDC
+      - name: Get OIDC token
         id: get-token
         run: |
-          OIDC_RESPONSE=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange")
-          echo "OIDC response: $OIDC_RESPONSE"
-          OIDC_TOKEN=$(echo "$OIDC_RESPONSE" | jq -r '.value')
-          NUGET_RESPONSE=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"gitHubToken\": \"$OIDC_TOKEN\"}" https://api.nuget.org/v1/authentication/issue-token)
-          echo "NuGet response: $NUGET_RESPONSE"
-          NUGET_TOKEN=$(echo "$NUGET_RESPONSE" | jq -r '.token')
-          echo "NUGET_TOKEN=$NUGET_TOKEN" >> $GITHUB_OUTPUT
+          OIDC_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
+          echo "NUGET_TOKEN=$OIDC_TOKEN" >> $GITHUB_OUTPUT
 
       - name: Publish to NuGet.org
         run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ steps.get-token.outputs.NUGET_TOKEN }}" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
