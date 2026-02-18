@@ -13,8 +13,8 @@
 
   <PropertyGroup>
     <Title>LoadingIndicators.Avalonia</Title>
-    <Version>2.0.6</Version>
-    <Authors>moviegear</Authors>
+    <Version>2.0.7</Version>
+    <Authors>Der_Floh</Authors>
     <Description>A collection of loading indicators for Avalonia</Description>
     <Copyright>moviegear © $([System.DateTime]::Now.Year)</Copyright>
     <PackageProjectUrl>https://github.com/Der-Floh/LoadingIndicators.Avalonia/</PackageProjectUrl>
@@ -28,14 +28,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
