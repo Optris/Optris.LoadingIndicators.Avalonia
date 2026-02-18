@@ -1,0 +1,37 @@
+name: Publish NuGet Package
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj
+
+      - name: Build
+        run: dotnet build LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj -c Release --no-restore
+
+      - name: Pack
+        run: dotnet pack LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj -c Release --no-build -o ./artifacts
+
+      - name: Publish to NuGet.org
+        run: dotnet nuget push "./artifacts/*.nupkg" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
+
+      - name: Publish symbols to NuGet.org
+        run: dotnet nuget push "./artifacts/*.snupkg" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
