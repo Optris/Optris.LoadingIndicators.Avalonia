@@ -33,8 +33,12 @@ jobs:
       - name: Get NuGet API key via OIDC
         id: get-token
         run: |
-          OIDC_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
-          NUGET_TOKEN=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"gitHubToken\": \"$OIDC_TOKEN\"}" https://api.nuget.org/v1/authentication/issue-token | jq -r '.token')
+          OIDC_RESPONSE=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange")
+          echo "OIDC response: $OIDC_RESPONSE"
+          OIDC_TOKEN=$(echo "$OIDC_RESPONSE" | jq -r '.value')
+          NUGET_RESPONSE=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"gitHubToken\": \"$OIDC_TOKEN\"}" https://api.nuget.org/v1/authentication/issue-token)
+          echo "NuGet response: $NUGET_RESPONSE"
+          NUGET_TOKEN=$(echo "$NUGET_RESPONSE" | jq -r '.token')
           echo "NUGET_TOKEN=$NUGET_TOKEN" >> $GITHUB_OUTPUT
 
       - name: Publish to NuGet.org
