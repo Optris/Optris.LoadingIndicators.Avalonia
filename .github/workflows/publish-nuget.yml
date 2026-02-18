@@ -30,12 +30,15 @@ jobs:
       - name: Pack
         run: dotnet pack LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj -c Release --no-build -o ./artifacts
 
-      - name: Login to NuGet.org
-        id: login
-        uses: dotnet/actions-nuget-authentication@v1
+      - name: Get NuGet API key via OIDC
+        id: get-token
+        run: |
+          OIDC_TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
+          NUGET_TOKEN=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"gitHubToken\": \"$OIDC_TOKEN\"}" https://api.nuget.org/v1/authentication/issue-token | jq -r '.token')
+          echo "NUGET_TOKEN=$NUGET_TOKEN" >> $GITHUB_OUTPUT
 
       - name: Publish to NuGet.org
-        run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ steps.get-token.outputs.NUGET_TOKEN }}" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
 
       - name: Publish symbols to NuGet.org
-        run: dotnet nuget push "./artifacts/*.snupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
+        run: dotnet nuget push "./artifacts/*.snupkg" --api-key "${{ steps.get-token.outputs.NUGET_TOKEN }}" --source "https://api.nuget.org/v3/index.json" --skip-duplicate
