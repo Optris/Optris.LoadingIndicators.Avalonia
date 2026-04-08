@@ -20,8 +20,6 @@
         <PackageIcon>icon.png</PackageIcon>
         <PackageTags>Avalonia, loading, progress, activity</PackageTags>
         <PackageId>Optris.LoadingIndicators.Avalonia</PackageId>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<IsAotCompatible>true</IsAotCompatible>
     </PropertyGroup>
 
