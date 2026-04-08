@@ -31,9 +31,12 @@ jobs:
           rm -f *.br *.gz
           # Strip fingerprint hashes: Name.HASH.ext -> Name.ext
           for f in *.*.*; do
-            [ ! -f "$f" ] && continue
-            base=$(echo "$f" | sed -E 's/\.[a-z0-9]{10,}\.(wasm|js|dat)$/.\1/')
-            [ "$base" != "$f" ] && cp "$f" "$base"
+            if [ -f "$f" ]; then
+              base=$(echo "$f" | sed -E 's/\.[a-z0-9]{10,}\.(wasm|js|dat)$/.\1/')
+              if [ "$base" != "$f" ]; then
+                cp "$f" "$base"
+              fi
+            fi
           done
 
       - name: Remove pre-compressed files from root
