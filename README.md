@@ -8,9 +8,9 @@
 
 [![Nuget](https://img.shields.io/nuget/v/Optris.LoadingIndicators.Avalonia)](https://www.nuget.org/packages/Optris.LoadingIndicators.Avalonia)
 
-![Demo](https://raw.githubusercontent.com/moviegear/LoadingIndicators.Avalonia/master/.github/demo.gif)
+![Demo](https://raw.githubusercontent.com/Optris/Optris.LoadingIndicators.Avalonia/master/.github/demo.gif)
 
-[Online demo](https://moviegear.github.io/LoadingIndicators.Avalonia)
+[Online demo](https://optris.github.io/Optris.LoadingIndicators.Avalonia)
 
 LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicators.WPF](https://github.com/zeluisping/LoadingIndicators.WPF) collection of 9 animated loading indicators.
 
