@@ -51,3 +51,13 @@ LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicato
 ```xml
 <li:LoadingIndicator IsActive="{Binding IsBusy}" Mode="Arcs" SpeedRatio="1.2" />
 ```
+
+## Releasing a new version
+
+The major version tracks Avalonia (e.g. `12.x.y` for Avalonia 12). Minor and patch versions are for library changes.
+
+1. Bump `<Version>` in [`LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj`](LoadingIndicators.Avalonia/LoadingIndicators.Avalonia.csproj)
+2. Commit and push to `master`
+3. Tag the release: `git tag -a v12.0.1 -m "v12.0.1"` (match the version you set)
+4. Push the tag: `git push origin v12.0.1`
+5. The [release workflow](.github/workflows/release.yml) packs and publishes the package to nuget.org automatically
