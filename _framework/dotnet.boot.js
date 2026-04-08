@@ -1,7 +1,7 @@
 export const config = /*json-start*/{
   "mainAssemblyName": "LoadingIndicators.Avalonia.Demo.Browser.dll",
   "resources": {
-    "hash": "sha256-hnn1b3YdQYNZefemLdXMRB9y/fNREIv2mGwz4ViKK8g=",
+    "hash": "sha256-uagmqi5CjQXzJhMlwZC3vQ83deFZxfnYCBsN04zT4jQ=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.js"
@@ -126,17 +126,17 @@ export const config = /*json-start*/{
       {
         "virtualPath": "LoadingIndicators.Avalonia.Demo.Browser.wasm",
         "name": "LoadingIndicators.Avalonia.Demo.Browser.wasm",
-        "integrity": "sha256-2JUPxNDwSMl2MTDTZS6wM8Rw1+nCwlUGPMPje/OqIkY="
+        "integrity": "sha256-Y9Xyxhh4zx0wxLrkda2zCStnS4Jbqa4jOaCCSyncWY4="
       },
       {
         "virtualPath": "LoadingIndicators.Avalonia.Demo.wasm",
         "name": "LoadingIndicators.Avalonia.Demo.wasm",
-        "integrity": "sha256-VM7s1pbyKSl8z5NslVOy4XXeaSzxlxWzpllNyJQAf1I="
+        "integrity": "sha256-Nm7iVjBi+JzUwCPRMsrwJTXoiYWkb5rutiDShXEqAUg="
       },
       {
         "virtualPath": "LoadingIndicators.Avalonia.wasm",
         "name": "LoadingIndicators.Avalonia.wasm",
-        "integrity": "sha256-doCBqQe+tWP1X+UZOsBsVbne19zOmXPVjFXe7Wave7s="
+        "integrity": "sha256-OjOGBBHLu756lOANfQjDIEefzYN48bn7SvEYFc3NMcg="
       },
       {
         "virtualPath": "SkiaSharp.wasm",
