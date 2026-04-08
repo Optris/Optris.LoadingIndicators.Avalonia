@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 env:
   PROJECT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj
-  OUTPUT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/bin/Release/net10.0/browser-wasm/AppBundle
+
 on:
   push:
     branches: [ master ]
@@ -19,23 +19,20 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools wasm-experimental
+        run: dotnet workload install wasm-tools
 
       - name: Publish .NET Project
-        run: dotnet publish $PROJECT_PATH -c Release --output release --nologo
-
-      - name: Change base-tag in index.html
-        run: sed -i 's/<base href="\/" \/>/<base href="\/Optris.LoadingIndicators.Avalonia\/" \/>/g' $OUTPUT_PATH/index.html
+        run: dotnet publish $PROJECT_PATH -c Release -o release --nologo
 
       - name: copy index.html to 404.html
-        run: cp $OUTPUT_PATH/index.html $OUTPUT_PATH/404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
 
       - name: Add .nojekyll file
-        run: touch $OUTPUT_PATH/.nojekyll
+        run: touch release/wwwroot/.nojekyll
 
       - name: Uploading files to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: ${{ env.OUTPUT_PATH }}
+          folder: release/wwwroot
