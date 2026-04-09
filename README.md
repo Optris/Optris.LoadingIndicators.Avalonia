@@ -1,18 +1,22 @@
-# LoadingIndicators.Avalonia
+# Optris.LoadingIndicators.Avalonia
 
-[![Nuget](https://img.shields.io/nuget/v/LoadingIndicators.Avalonia.New)](https://www.nuget.org/packages/LoadingIndicators.Avalonia.New)
+> **Optris-maintained fork.** The [original LoadingIndicators.Avalonia](https://github.com/moviegear/LoadingIndicators.Avalonia) has been unmaintained for over two years, and an open community PR for newer Avalonia versions has been sitting unreviewed for months. Optris GmbH has adopted this project to keep it alive for the Avalonia community, starting with an Avalonia 12 port. Published to NuGet as **`Optris.LoadingIndicators.Avalonia`** to avoid colliding with the original package ID. Namespaces are unchanged, so consumer code only needs to swap the package reference.
+>
+> **Repository:** https://github.com/Optris/Optris.LoadingIndicators.Avalonia
 
-![Demo](https://raw.githubusercontent.com/der-floh/LoadingIndicators.Avalonia/master/.github/demo.gif)
+---
 
-[Online demo](https://der-floh.github.io/LoadingIndicators.Avalonia)
+[![Nuget](https://img.shields.io/nuget/v/Optris.LoadingIndicators.Avalonia)](https://www.nuget.org/packages/Optris.LoadingIndicators.Avalonia)
+
+![Demo](https://raw.githubusercontent.com/Optris/Optris.LoadingIndicators.Avalonia/master/.github/demo.gif)
+
+[Online demo](https://optris.github.io/Optris.LoadingIndicators.Avalonia)
 
 LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicators.WPF](https://github.com/zeluisping/LoadingIndicators.WPF) collection of 9 animated loading indicators.
 
-## Themes
 
+## Themes
 - Arc
-- Arc Ease
-- Arc Grow
 - Arcs
 - Arcs Ring
 - Double Bounce
@@ -23,24 +27,36 @@ LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicato
 - Wave
 
 ## Features
-
 - Easy activation/deactivation
 - Easy theme change
 - Adjustable animation speed
 
 ## Usage
-
-1. Add Styles in `App.axaml`
-
+1. Add resources in App.axaml
 ```xml
-<Application.Styles>
-    <FluentTheme />
-    <StyleInclude Source="avares://LoadingIndicators.Avalonia/LoadingIndicators.axaml" />
-</Application.Styles>
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceInclude Source="avares://LoadingIndicators.Avalonia/LoadingIndicators.axaml" />
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
+2. Include namespace
+```xml
+<Window ...
+        xmlns:li="using:LoadingIndicators.Avalonia">
+```
+3. Add indicator and select mode
+```xml
+<li:LoadingIndicator IsActive="{Binding IsBusy}" Mode="Arcs" SpeedRatio="1.2" />
 ```
 
-1. Add indicator and select mode
+## Releasing a new version
 
-```xml
-<LoadingIndicator IsActive="{Binding IsBusy}" Mode="Arcs" SpeedRatio="1.5" Thickness="4" />
-```
+The major version tracks Avalonia (e.g. `12.x.y` for Avalonia 12). Minor and patch versions are for library changes.
+
+1. Tag the release: `git tag -a v12.0.1 -m "v12.0.1"`
+2. Push the tag: `git push origin v12.0.1`
+
+The [release workflow](.github/workflows/release.yml) extracts the version from the tag, packs the package with it, and publishes to nuget.org. No need to edit version numbers in source files.

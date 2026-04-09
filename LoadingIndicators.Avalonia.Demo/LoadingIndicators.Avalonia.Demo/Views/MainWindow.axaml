@@ -2,15 +2,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="using:LoadingIndicators.Avalonia.Demo.Views"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        xmlns:v="clr-namespace:LoadingIndicators.Avalonia.Demo.Views"
+        mc:Ignorable="d"
         x:Class="LoadingIndicators.Avalonia.Demo.Views.MainWindow"
+        d:DesignWidth="300" d:DesignHeight="300"
+
         Icon="/Assets/avalonia-logo.ico"
         Title="LoadingIndicators Demo"
-        Width="400" Height="300"
-        MinWidth="400" MinHeight="300"
+        Width="300" Height="300"
+        MinWidth="300" MinHeight="300"
+        CanResize="True"
         WindowStartupLocation="CenterScreen">
 
-        <views:MainView />
-
+    <v:MainView Width="{Binding $parent[Window].Bounds.Width}"
+                Height="{Binding $parent[Window].Bounds.Height}"/>
 </Window>

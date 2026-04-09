@@ -1,22 +1,17 @@
-<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Styles.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/Arc.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/ArcEase.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/ArcGrow.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/Arcs.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/ArcsRing.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/DoubleBounce.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/FlipPlane.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/Pulse.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/Ring.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/ThreeDots.axaml" />
-                <ResourceInclude Source="avares://LoadingIndicators.Avalonia/Themes/Wave.axaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Styles.Resources>
-
-</Styles>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Themes/Arc.axaml" />
+        <ResourceInclude Source="Themes/ArcEase.axaml" />
+        <ResourceInclude Source="Themes/ArcGrow.axaml" />
+        <ResourceInclude Source="Themes/Arcs.axaml" />
+        <ResourceInclude Source="Themes/ArcsRing.axaml" />
+        <ResourceInclude Source="Themes/DoubleBounce.axaml" />
+        <ResourceInclude Source="Themes/FlipPlane.axaml" />
+        <ResourceInclude Source="Themes/Pulse.axaml" />
+        <ResourceInclude Source="Themes/Ring.axaml" />
+        <ResourceInclude Source="Themes/ThreeDots.axaml" />
+        <ResourceInclude Source="Themes/Wave.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
