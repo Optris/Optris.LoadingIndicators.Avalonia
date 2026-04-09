@@ -21,6 +21,7 @@
         <Setter Property="Foreground" Value="#CC119EDA" />
         <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
         <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
+        <Setter Property="Thickness" Value="8"/>
         <Setter Property="MinWidth" Value="64" />
         <Setter Property="MinHeight" Value="64" />
         <Setter Property="IsHitTestVisible" Value="False" />
@@ -73,7 +74,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -95,7 +100,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -117,7 +126,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -139,7 +152,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -161,7 +178,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -183,7 +204,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -205,7 +230,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -227,7 +256,11 @@
                                             <Setter Property="Opacity" Value="1" />
                                         </KeyFrame>
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="20%">
+                                            <Setter Property="Opacity" Value="1" />
+                                        </KeyFrame>
+                                        
+                                        <KeyFrame Cue="30%">
                                             <Setter Property="Opacity" Value="0.3" />
                                         </KeyFrame>
 
@@ -242,34 +275,42 @@
                         <Grid>
                             <Arc x:Name="Arc1"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="-100" />
 
                             <Arc x:Name="Arc2"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="-55" />
 
                             <Arc x:Name="Arc3"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="-10" />
 
                             <Arc x:Name="Arc4"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="35" />
 
                             <Arc x:Name="Arc5"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="80" />
 
                             <Arc x:Name="Arc6"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="125" />
 
                             <Arc x:Name="Arc7"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="170" />
 
                             <Arc x:Name="Arc8"
                                  Stroke="{TemplateBinding Foreground}"
+                                 StrokeThickness="{TemplateBinding Thickness}"
                                  StartAngle="215" />
                         </Grid>
                     </Viewbox>

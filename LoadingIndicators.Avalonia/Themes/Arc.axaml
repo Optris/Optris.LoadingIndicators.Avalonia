@@ -81,6 +81,7 @@
                         </Viewbox.Styles>
 
                         <Arc Stroke="{TemplateBinding Foreground}"
+                             StrokeThickness="{TemplateBinding Thickness}"
                              StartAngle="-90"
                              SweepAngle="-270" />
                     </Viewbox>

@@ -21,6 +21,7 @@
         <Setter Property="Foreground" Value="#CC119EDA" />
         <Setter Property="Width" Value="{Binding $parent[c:LoadingIndicator].Bounds.Width}" />
         <Setter Property="Height" Value="{Binding $parent[c:LoadingIndicator].Bounds.Height}" />
+        <Setter Property="Thickness" Value="8"/>
         <Setter Property="MinWidth" Value="64" />
         <Setter Property="MinHeight" Value="64" />
         <Setter Property="IsHitTestVisible" Value="False" />
@@ -268,39 +269,47 @@
 
                             <Ellipse x:Name="Ellipse1"
                                      Grid.Row="0" Grid.Column="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse2"
                                      Grid.Column="3" Grid.Row="0"
                                      Grid.ColumnSpan="2" Grid.RowSpan="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse3"
                                      Grid.Column="4" Grid.Row="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse4"
                                      Grid.Column="3" Grid.Row="3"
                                      Grid.ColumnSpan="2" Grid.RowSpan="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse5"
                                      Grid.Column="2" Grid.Row="4"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse6"
                                      Grid.Column="0" Grid.Row="3"
                                      Grid.ColumnSpan="2" Grid.RowSpan="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse7"
                                      Grid.Column="0" Grid.Row="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
 
                             <Ellipse x:Name="Ellipse8"
                                      Grid.Column="0" Grid.Row="0"
                                      Grid.ColumnSpan="2" Grid.RowSpan="2"
-                                     Fill="{TemplateBinding Foreground}" />
+                                     Fill="{TemplateBinding Foreground}"
+                                     Width="{TemplateBinding Thickness}" Height="{TemplateBinding Thickness}" />
                         </Grid>
                     </Viewbox>
                 </Border>

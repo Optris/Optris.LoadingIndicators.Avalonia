@@ -3,6 +3,8 @@
 public enum LoadingIndicatorMode
 {
     Arc,
+    ArcEase,
+    ArcGrow,
     Arcs,
     ArcsRing,
     DoubleBounce,

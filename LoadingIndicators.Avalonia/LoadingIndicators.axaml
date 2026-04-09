@@ -3,6 +3,8 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="Themes/Arc.axaml" />
+        <ResourceInclude Source="Themes/ArcEase.axaml" />
+        <ResourceInclude Source="Themes/ArcGrow.axaml" />
         <ResourceInclude Source="Themes/Arcs.axaml" />
         <ResourceInclude Source="Themes/ArcsRing.axaml" />
         <ResourceInclude Source="Themes/DoubleBounce.axaml" />

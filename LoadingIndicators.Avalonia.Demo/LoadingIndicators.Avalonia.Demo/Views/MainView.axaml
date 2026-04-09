@@ -11,17 +11,19 @@
              Width="300" Height="300">
 
 
-    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*"
+    <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*,*"
           Width="{Binding $parent[UserControl].Width}"
           Height="{Binding $parent[UserControl].Height}"
           MinHeight="300" MinWidth="300">
 
         <c:LoadingIndicator Grid.Row="0" Grid.Column="0" Mode="Arc" />
-        <c:LoadingIndicator Grid.Row="0" Grid.Column="1" Mode="Arcs" />
-        <c:LoadingIndicator Grid.Row="0" Grid.Column="2" Mode="ArcsRing" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="0" Mode="DoubleBounce" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="1" Mode="FlipPlane" />
-        <c:LoadingIndicator Grid.Row="1" Grid.Column="2" Mode="Pulse" />
+        <c:LoadingIndicator Grid.Row="0" Grid.Column="1" Mode="ArcEase" />
+        <c:LoadingIndicator Grid.Row="0" Grid.Column="2" Mode="ArcGrow" />
+        <c:LoadingIndicator Grid.Row="0" Grid.Column="3" Mode="Arcs" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="0" Mode="ArcsRing" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="1" Mode="DoubleBounce" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="2" Mode="FlipPlane" />
+        <c:LoadingIndicator Grid.Row="1" Grid.Column="3" Mode="Pulse" />
         <c:LoadingIndicator Grid.Row="2" Grid.Column="0" Mode="Ring" />
         <c:LoadingIndicator Grid.Row="2" Grid.Column="1" Mode="ThreeDots" />
         <c:LoadingIndicator Grid.Row="2" Grid.Column="2" Mode="Wave" />
