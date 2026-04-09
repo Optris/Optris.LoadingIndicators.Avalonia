@@ -1,85 +1,56 @@
 name: Deploy to GitHub Pages
 
+env:
+  PROJECT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj
+
 on:
   push:
     branches: [ master ]
-  workflow_dispatch: {}
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-permissions:
-  contents: write
-
-env:
-  PROJECT_PATH: LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Browser/LoadingIndicators.Avalonia.Demo.Browser.csproj
-  TFM: net10.0-browser
 
 jobs:
   deploy-to-github-pages:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup .NET 10
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'
 
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools-net8
+        run: dotnet workload install wasm-tools
 
       - name: Publish .NET Project
-        run: dotnet publish "$PROJECT_PATH" -c Release --nologo
+        run: dotnet publish $PROJECT_PATH -c Release -o release --nologo
 
-      - name: Locate publish output
-        id: out
-        shell: bash
+      - name: Clean up _framework for static hosting
         run: |
-          set -euo pipefail
-          ROOT="$(dirname "$PROJECT_PATH")"
+          cd release/wwwroot/_framework
+          # Remove pre-compressed files (GitHub Pages handles compression)
+          rm -f *.br *.gz
+          # Strip fingerprint hashes: Name.HASH.ext -> Name.ext
+          for f in *.*.*; do
+            if [ -f "$f" ]; then
+              base=$(echo "$f" | sed -E 's/\.[a-z0-9]{10,}\.(wasm|js|dat)$/.\1/')
+              if [ "$base" != "$f" ]; then
+                cp "$f" "$base"
+              fi
+            fi
+          done
 
-          CANDIDATE1="$ROOT/bin/Release/${TFM}/publish/wwwroot"
-          CANDIDATE2="$ROOT/bin/Release/${TFM}/release/wwwroot"
-          CANDIDATE3="$ROOT/bin/Release/${TFM}/browser-wasm/AppBundle"
+      - name: Remove pre-compressed files from root
+        run: rm -f release/wwwroot/*.br release/wwwroot/*.gz
 
-          if [ -d "$CANDIDATE1" ]; then OUT="$CANDIDATE1"
-          elif [ -d "$CANDIDATE2" ]; then OUT="$CANDIDATE2"
-          elif [ -d "$CANDIDATE3" ]; then OUT="$CANDIDATE3"
-          else
-            echo "Could not locate wwwroot. Checked:"
-            echo "  $CANDIDATE1"
-            echo "  $CANDIDATE2"
-            echo "  $CANDIDATE3"
-            exit 1
-          fi
+      - name: copy index.html to 404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
 
-          echo "dir=$OUT" >> "$GITHUB_OUTPUT"
-          echo "Using publish dir: $OUT"
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
 
-      - name: Prepare Pages artifacts
-        run: |
-          mkdir -p site
-          cp -r "${{ steps.out.outputs.dir }}/." site/
-
-          # Ensure GitHub Pages serves _framework and friends
-          touch site/.nojekyll
-
-          # Adjust <base href> for /<repo>/ hosting
-          REPO="${GITHUB_REPOSITORY#*/}"
-          if grep -q '<base href="/"' site/index.html; then
-            sed -i "s#<base href=\"/\"#<base href=\"/${REPO}/\"#g" site/index.html
-          fi
-
-          # SPA-style fallback
-          cp site/index.html site/404.html || true
-
-      - name: Deploy to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Uploading files to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: site
-          clean: true
+          folder: release/wwwroot
