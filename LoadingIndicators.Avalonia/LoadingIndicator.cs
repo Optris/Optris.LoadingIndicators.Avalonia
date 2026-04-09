@@ -40,9 +40,15 @@ public class LoadingIndicator : TemplatedControl
         set => SetValue(SpeedRatioProperty, value);
     }
 
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when control themes cannot be loaded. This typically occurs when
+    /// <see cref="Application.Current"/> is <c>null</c> or the theme resources
+    /// have not been registered. At runtime, this surfaces as a
+    /// <see cref="TypeInitializationException"/> wrapping the inner exception.
+    /// </exception>
     static LoadingIndicator()
     {
-        if (!TryGetThemes(out themes)) throw new NullReferenceException("Failed to get control themes");
+        if (!TryGetThemes(out themes)) throw new InvalidOperationException("Failed to get control themes");
     }
 
     public LoadingIndicator() => UpdateTheme();
