@@ -64,7 +64,7 @@
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="0%">
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
@@ -86,7 +86,7 @@
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="0%">
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
@@ -108,7 +108,7 @@
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="0%">
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
@@ -130,7 +130,7 @@
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="0%">
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
@@ -152,7 +152,7 @@
                                                IterationCount="Infinite"
                                                SpeedRatio="{Binding $parent[c:LoadingIndicator].SpeedRatio}">
 
-                                        <KeyFrame Cue="10%">
+                                        <KeyFrame Cue="0%">
                                             <Setter Property="ScaleTransform.ScaleY" Value="1" />
                                         </KeyFrame>
 
