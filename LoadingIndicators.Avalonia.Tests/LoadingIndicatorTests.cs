@@ -116,7 +116,7 @@ public class LoadingIndicatorTests
     public void AllEnumValues_HaveThemeResources()
     {
         var modes = Enum.GetValues<LoadingIndicatorMode>();
-        Assert.Equal(9, modes.Length);
+        Assert.Equal(11, modes.Length);
 
         foreach (var mode in modes)
         {
