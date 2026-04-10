@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup>
     <Nullable>enable</Nullable>
-    <AvaloniaVersion>12.0.*</AvaloniaVersion>
     <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
 
