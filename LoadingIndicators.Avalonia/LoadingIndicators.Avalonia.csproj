@@ -21,14 +21,16 @@
         <PackageTags>Avalonia, loading, progress, activity</PackageTags>
         <PackageId>Optris.LoadingIndicators.Avalonia</PackageId>
 		<IsAotCompatible>true</IsAotCompatible>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DebugType>none</DebugType>
+        <DebugType>portable</DebugType>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
