@@ -54,7 +54,7 @@ LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicato
 
 ## Releasing a new version
 
-The major version tracks Avalonia (e.g. `12.x.y` for Avalonia 12). Minor and patch versions are for library changes.
+The major & minor version track Avalonia (e.g. `12.0.y` for Avalonia 12). Patch versions are for library changes.
 
 1. Tag the release: `git tag -a v12.0.1 -m "v12.0.1"`
 2. Push the tag: `git push origin v12.0.1`
