@@ -24,3 +24,33 @@ jobs:
 
       - name: Test
         run: dotnet test LoadingIndicators.Avalonia.Tests/LoadingIndicators.Avalonia.Tests.csproj -c Release
+
+  aot:
+    name: AOT compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+
+      # Native AOT links with clang against zlib on Linux.
+      - name: Install Native AOT prerequisites
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev
+
+      # A library's trim/AOT warnings only surface when a consuming app is AOT-published.
+      # The demo Desktop project roots the whole library, so this is the authoritative gate.
+      - name: AOT publish demo (fail on any IL trim/AOT warning)
+        run: |
+          set -o pipefail
+          dotnet publish LoadingIndicators.Avalonia.Demo/LoadingIndicators.Avalonia.Demo.Desktop/LoadingIndicators.Avalonia.Demo.Desktop.csproj \
+            -c Release -r linux-x64 -p:PublishAot=true 2>&1 | tee aot-publish.log
+          if grep -nE "warning IL[0-9]{4}" aot-publish.log; then
+            echo "::error::Native AOT/trim warnings detected — the library is no longer AOT-clean (see IL#### lines above)."
+            exit 1
+          fi
+          echo "No IL2xxx/IL3xxx trim/AOT warnings — library is AOT-clean."

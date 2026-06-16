@@ -52,6 +52,17 @@ LoadingIndicators.Avalonia is an adaptation for Avalonia of the [LoadingIndicato
 <li:LoadingIndicator IsActive="{Binding IsBusy}" Mode="Arcs" SpeedRatio="1.2" />
 ```
 
+## Trimming & Native AOT
+
+The package is **trim- and Native-AOT-compatible**. The assembly is marked `IsTrimmable`, all
+bindings in the control themes are compiled (no reflection bindings), and the control uses no
+runtime reflection — so it adds no trim/AOT warnings to a consuming app. This is enforced in CI by
+publishing the demo with `PublishAot=true` and failing on any `IL2xxx`/`IL3xxx` warning.
+
+Nothing extra is required to consume it from an AOT app — just keep Avalonia's default compiled
+bindings (`<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>`) in
+your own project, as the Avalonia templates already do.
+
 ## Releasing a new version
 
 The major version tracks Avalonia (e.g. `12.x.y` for Avalonia 12). Minor and patch versions are for library changes.
