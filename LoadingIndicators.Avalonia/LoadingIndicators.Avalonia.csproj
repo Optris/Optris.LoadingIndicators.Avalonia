@@ -10,7 +10,7 @@
         <Version>0.0.0-local</Version>
         <Authors>Optris GmbH, original by moviegear</Authors>
         <Company>Optris GmbH</Company>
-        <Description>Optris-maintained fork of LoadingIndicators.Avalonia, ported to Avalonia 12. An adaptation for Avalonia of the LoadingIndicators.WPF collection of 9 animated loading indicators.</Description>
+        <Description>Optris-maintained fork of LoadingIndicators.Avalonia, ported to Avalonia 12. An adaptation for Avalonia of the LoadingIndicators.WPF collection of 9 animated loading indicators. Trim- and Native-AOT-compatible.</Description>
         <Copyright>Optris GmbH, moviegear © $([System.DateTime]::Now.Year)</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -18,7 +18,7 @@
         <RepositoryUrl>https://github.com/Optris/Optris.LoadingIndicators.Avalonia.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageIcon>icon.png</PackageIcon>
-        <PackageTags>Avalonia, loading, progress, activity</PackageTags>
+        <PackageTags>Avalonia, loading, progress, activity, AOT, trimming</PackageTags>
         <PackageId>Optris.LoadingIndicators.Avalonia</PackageId>
 		<IsAotCompatible>true</IsAotCompatible>
         <DebugType>portable</DebugType>
