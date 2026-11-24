@@ -19,6 +19,13 @@ updates:
       xunit:
         patterns:
           - "xunit*"
+    ignore:
+      # Avalonia.Headless.XUnit is built against xunit.v3 3.x. On xunit 4 every [AvaloniaFact]
+      # runs outside the headless app and the whole suite fails, even though restore and build
+      # succeed. Avalonia plans support for 13.0 at the earliest:
+      # https://github.com/AvaloniaUI/Avalonia/issues/22072 - drop this rule once it ships.
+      - dependency-name: "xunit*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
