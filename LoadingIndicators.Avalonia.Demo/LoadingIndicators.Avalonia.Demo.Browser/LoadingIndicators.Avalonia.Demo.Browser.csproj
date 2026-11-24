@@ -1,6 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.WebAssembly">
     <PropertyGroup>
-        <TargetFramework>net10.0-browser</TargetFramework>
+        <!-- Target the runtime of whichever SDK builds this. Its plain `wasm-tools` workload only
+             covers that runtime: SDK 11 building net10.0-browser needs `wasm-tools-net10`, and
+             without it the publish succeeds but leaves SkiaSharp unlinked, so the demo cannot start. -->
+        <TargetFramework>net$(BundledNETCoreAppTargetFrameworkVersion)-browser</TargetFramework>
         <OutputType>Exe</OutputType>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Nullable>enable</Nullable>
