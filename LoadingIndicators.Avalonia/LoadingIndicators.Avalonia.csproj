@@ -30,7 +30,6 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
